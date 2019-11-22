@@ -26,7 +26,7 @@ const getContractAddresses = (): ContractAddresses => {
 
   if (envType === 'DEV' || envType === 'TEST') {
     // If its development, just read from the compiled contract
-    const deployedAddresses = require('../contracts/DeployedAddresses.json')
+    const deployedAddresses = require('../../app/contracts/DeployedAddresses.json')
 
     return {
       MACI_CONTRACT_ADDRESS: deployedAddresses.maciAddress,

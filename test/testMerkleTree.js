@@ -2,7 +2,7 @@ const assert = require('chai').assert
 const ethers = require('ethers')
 const { mimc7 } = require('circomlib')
 
-const { mimcAddress } = require('../_build/contracts/DeployedAddresses.json')
+const deployedAddresses = require('../app/contracts/DeployedAddresses.json')
 const { stringifyBigInts, linkLibraries } = require('../_build/utils/helpers')
 const { createMerkleTree } = require('../_build/utils/merkletree')
 const { ganacheConfig, merkleTreeConfig } = require('../maci-config')
@@ -11,14 +11,14 @@ const provider = new ethers.providers.JsonRpcProvider(ganacheConfig.host)
 const privateKey = ganacheConfig.privateKey
 const wallet = new ethers.Wallet(privateKey, provider)
 
-const hasherDef = require('../_build/contracts/Hasher.json')
+const hasherDef = require('../app/contracts/Hasher.json')
 const hasherFactory = new ethers.ContractFactory(
   hasherDef.abi,
-  linkLibraries(hasherDef.bytecode, 'MiMC', mimcAddress),
+  linkLibraries(hasherDef.bytecode, 'MiMC', deployedAddresses.mimcAddress),
   wallet
 )
 
-const merkletreeDef = require('../_build/contracts/MerkleTree.json')
+const merkletreeDef = require('../app/contracts/MerkleTree.json')
 const merkleTreeFactory = new ethers.ContractFactory(
   merkletreeDef.abi,
   merkletreeDef.bytecode,

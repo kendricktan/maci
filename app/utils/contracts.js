@@ -13,9 +13,9 @@ const contractAddresses: ContractAddresses = getContractAddresses()
 
 // Read-only contract
 // const maciContract = new ethers.Contract(maciContractAddress, maciContractDef.abi, provider)
-const maciContractDef = require('../contracts/MACI.json')
-const signUpTokenContractDef = require('../contracts/signUpToken.json')
-const merkleTreeContractDef = require('../contracts/MerkleTree.json')
+const maciContractDef = require('../../app/contracts/MACI.json')
+const signUpTokenContractDef = require('../../app/contracts/SignUpToken.json')
+const merkleTreeContractDef = require('../../app/contracts/MerkleTree.json')
 
 const maciContract = new ethers.Contract(
   contractAddresses.MACI_CONTRACT_ADDRESS,
